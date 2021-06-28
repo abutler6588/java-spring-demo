@@ -15,4 +15,14 @@ class MathControllerTest {
         String expected = "3.141592653589793";
         assertTrue(expected.equals(mathController.getPiMethod()));
     }
+
+    @Test
+    public void testAddOperation(){
+        //SEAT
+        //SETUP
+        MathController mathController = new MathController();
+        String expected = "10";
+        assertEquals(10,10);
+
+    }
 }
