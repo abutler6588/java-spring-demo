@@ -23,6 +23,21 @@ class MathControllerTest {
         MathController mathController = new MathController();
         String expected = "10";
         assertEquals(10,10);
-
     }
+
+    @Test
+    public void testMathSumPost(){
+        //SEAT
+        //SETUP
+        MathController mathController = new MathController();
+        //EXECUTION
+        int expected = 15;
+        mathController.add(4,5,6);
+        //Assertion
+        assertEquals(15,mathController.add(4,5,6));
+        //Teardown
+    }
+
+    @Test
+    
 }
