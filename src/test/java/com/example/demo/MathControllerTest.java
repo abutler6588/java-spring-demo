@@ -105,12 +105,23 @@ class MathControllerTest {
     @Test
     public void testAreaOfCircle() throws Exception {
 
+        RequestBuilder request = post("/math/area/4");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("The area of a 4 circle is 50.26548245743669"));
+    }
+
+    @Test
+    public void testAreaOfRectangle() throws Exception {
+
         RequestBuilder request = post("/math/area/4/5");
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string("The area of a 4x5 rectangle is 20"));
     }
+
 
 
 
