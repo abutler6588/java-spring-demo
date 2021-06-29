@@ -6,7 +6,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,38 +37,82 @@ class MathControllerTest {
                 .andExpect(content().string("3.141592653589793"));
     }
 
+//    @Test
+//    public void testAddOperation(){
+//        //SEAT
+//        //SETUP
+//        MathController mathController = new MathController();
+//        String expected = "10";
+//        assertEquals(10,10);
+//    }
+
     @Test
-    public void testAddOperation(){
-        //SEAT
-        //SETUP
-        MathController mathController = new MathController();
-        String expected = "10";
-        assertEquals(10,10);
+    public void testAddOperation() throws Exception {
+
+        RequestBuilder request = get("/math/calculate?operation=add&x=4&y=6");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("10"));
+    }
+
+//    @Test
+//    public void testMathSumPost(){
+//        //SEAT
+//        //SETUP
+//        MathController mathController = new MathController();
+//        //EXECUTION
+//        int expected = 15;
+//        mathController.add(4,5,6);
+//        //Assertion
+//        assertEquals(15,mathController.add(4,5,6));
+//        //Teardown
+//    }
+
+    @Test
+    public void testMathSumPost() throws Exception {
+
+        RequestBuilder request = post("/math/sum?x=4&y=5&z=6");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("15"));
+    }
+
+//    @Test
+//    public void testVolumeOfRectangle(){
+//        //SEAT
+//        //SETUP
+//        MathController mathController = new MathController();
+//        //EXEC
+//        int expected = 60;
+//        mathController.multiply(3,4,5);
+//        //ASSERT
+//        assertEquals("The volume of a 3x4x5 rectangle is 60", mathController.multiply(3,4,5));
+//        //TEAR DOWN
+//    }
+
+    @Test
+    public void testVolumeOfRectangle() throws Exception {
+
+        RequestBuilder request = post("/math/volume/3/4/5");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("The volume of a 3x4x5 rectangle is 60"));
     }
 
     @Test
-    public void testMathSumPost(){
-        //SEAT
-        //SETUP
-        MathController mathController = new MathController();
-        //EXECUTION
-        int expected = 15;
-        mathController.add(4,5,6);
-        //Assertion
-        assertEquals(15,mathController.add(4,5,6));
-        //Teardown
+    public void testAreaOfCircle() throws Exception {
+
+        RequestBuilder request = post("/math/area/4/5");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("The area of a 4x5 rectangle is 20"));
     }
 
-    @Test
-    public void testVolumeOfRectangle(){
-        //SEAT
-        //SETUP
-        MathController mathController = new MathController();
-        //EXEC
-        int expected = 60;
-        mathController.multiply(3,4,5);
-        //ASSERT
-        assertEquals("The volume of a 3x4x5 rectangle is 60", mathController.multiply(3,4,5));
-        //TEAR DOWN
-    }
+
+
+
 }
