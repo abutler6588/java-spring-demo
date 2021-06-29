@@ -104,10 +104,7 @@ class MathControllerTest {
 
     @Test
     public void testAreaOfCircle() throws Exception {
-
         RequestBuilder request = post("/math/area")
-                .param("length", "4")
-                .param("width", "5")
                 .param("radius", "4")
                 .param("type", "circle");
 
@@ -116,15 +113,25 @@ class MathControllerTest {
                 .andExpect(content().string("The area of a 4 circle is 50.26548245743669"));
     }
 
+//    @Test
+//    public void testAreaOfRectangle() throws Exception {
+//
+//        RequestBuilder request = post("/math/area")
+//                .param("length", "4")
+//                .param("width", "5")
+//                .param("radius", "4")
+//                .param("type", "rectangle");
+//
+//        this.mvc.perform(request)
+//                .andExpect(status().isOk())
+//                .andExpect(content().string("The area of a 4x5 rectangle is 20"));
+//    }
     @Test
-    public void testAreaOfRectangle() throws Exception {
-
+    public void testMultiply() throws Exception {
         RequestBuilder request = post("/math/area")
-                .param("length", "4")
                 .param("width", "5")
-                .param("radius", "4")
+                .param("length", "4")
                 .param("type", "rectangle");
-
         this.mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string("The area of a 4x5 rectangle is 20"));
