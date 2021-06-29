@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MathController {
 
+    private double width;
+    private double lenght;
+    private double height;
+
     @GetMapping("/math/pi")
     public String getPiMethod() {
         double pi = Math.PI;
@@ -21,4 +25,8 @@ public class MathController {
         return x + y + z;
     }
 
+    @PostMapping("/math/volume/{length}/{width}/{height}")
+    public String multiply(@PathVariable int length, @PathVariable int width, @PathVariable int height) {
+        return "The volume of a " + length + "x" + width + "x" + height + " rectangle is " + length * width * height;
+    }
 }
