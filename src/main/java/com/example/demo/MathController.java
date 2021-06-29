@@ -31,15 +31,22 @@ public class MathController {
     }
 
     //rectangle
-    @PostMapping("/math/area/{length}/{width}")
-    public String multiply(@PathVariable int length, @PathVariable int width) {
-        return "The area of a " + length + "x" + width + " rectangle is " + length * width;
+    @PostMapping("/math/area")
+    public String multiply(@RequestParam String length, @RequestParam String width, @RequestParam String type, @RequestParam String radius) {
+        if (type.equals("circle")) {
+            int rad = Integer.parseInt(radius);
+            return "The area of a " + radius +  " circle is " +  Math.PI * rad * rad;
+        } else if(type.equals("rectangle")){
+            int legnth1 = Integer.parseInt(length);
+            int width1 = Integer.parseInt(width);
+            return "The area of a " + length + "x" + width + " rectangle is " + legnth1 * width1;
+        } else return "error";
     }
 
     //circle
     //PI * radius^2
-    @PostMapping("/math/area/{radius}")
-    public String multiply(@PathVariable int radius) {
-        return "The area of a " + radius +  " circle is " +  Math.PI * radius * radius;
-    }
+//    @PostMapping("/math/area")
+//    public String multiply(@RequestBody String circle) {
+//        return "The area of a " + radius +  " circle is " +  Math.PI * radius * radius;
+//    }
 }
