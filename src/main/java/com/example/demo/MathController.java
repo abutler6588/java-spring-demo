@@ -63,4 +63,11 @@ public class MathController {
 //    public String multiply(@RequestBody String circle) {
 //        return "The area of a " + radius +  " circle is " +  Math.PI * radius * radius;
 //    }
+
+    @PostMapping("/flights/tickets/total")
+    public String calculateTotalTicket(@RequestBody Flight flight ){
+            Flight flight1 = new Flight();
+
+            return flight1;
+    }
 }
